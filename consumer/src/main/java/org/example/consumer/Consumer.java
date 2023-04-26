@@ -1,10 +1,15 @@
 package org.example.consumer;
 
-import org.example.service.Greeting;
+import org.example.service.Currency;
+
+import java.util.ServiceLoader;
 
 public class Consumer {
     public static void main(String[] args) {
 
-        Greeting greeting;
+        ServiceLoader<Currency> currencies = ServiceLoader.load(Currency.class);
+        for(var currency: currencies) {
+            System.out.println(currency.currencyConverter());
+        }
     }
 }
